@@ -20,9 +20,6 @@
     <script type="text/babel">
         function App(){
             let arr = [1,2,3,4,5];
-            for(let i of arr){
-                console.log([i]);
-            }
             let Obj = {
                 name:"sanchi",
                 age:18,
@@ -32,6 +29,14 @@
                 <>
                 <h1>Rendering Arrays and Objects in JSX</h1>
                 <h2>{arr}</h2>
+                {arr.map((num) => <h2>{num}</h2>)}
+                {/*<h2>{Obj}</h2> = wrong (can't do this)*/}
+                {/* 1.yaha hum arrays to aise pass kar sakte hai, lekin objects ko aise
+                  pass nahi kar sake.
+                  2. par hum yaha object ki keys pass kar sakte hai.
+                  3. we cant use for loop in jsx so alternative is map,filter etc.*/} 
+                  <h2>{Obj.name} <br/>
+                    {Obj.age}</h2>
                 </>
             )
         }
@@ -41,3 +46,4 @@
     </script>
     </body>
     </html>
+    
