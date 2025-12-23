@@ -1,0 +1,50 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script
+        crossorigin
+        src="https://unpkg.com/react@18/umd/react.development.js"
+        ></script>
+        <script
+        crossorigin
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        ></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <title>Calling the function</title>
+    </head>
+    <body>
+    
+            <div id="root" ></div>
+            <script type="text/babel">
+
+
+
+
+            var score = 0;
+            function addOne(){
+                 score +=1
+                 console.log(score)
+                rootElement.render(<App />);
+               
+            }
+            
+        const App = () =>{
+
+            return( <div style={{textAlign: "center"}}>
+                    <h1>Score handler</h1>
+                    <h2>Current Score {score}</h2>
+                    <button onClick={addOne}>Add 1</button>
+            </div>)
+            }
+
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+        </script>
+        
+        
+    </body>
+    </html>
