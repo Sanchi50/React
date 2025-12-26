@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Keeper</title>
+    <script
+        crossorigin
+        src="https://unpkg.com/react@18/umd/react.development.js"
+        ></script>
+        <script
+        crossorigin
+        src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        ></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+let score = 0;
+let wicket = 0;
+let ballWiseRes = [];
+
+function addScore(num){
+    
+    if(wicket < 10){
+    ballWiseRes.push(num);
+    score += num;
+    console.log(ballWiseRes)
+    }
+    rootElement.render(<App/>)
+}
+
+function addWicket(){
+ if(wicket < 10){
+    ballWiseRes.push("W");
+    wicket+=1;
+     console.log(ballWiseRes)
+    }
+    rootElement.render(<App/>)
+}
+
+
+const ScoreButtons = () => {
+    return(
+    <div>
+        <button onClick={() => addScore(0)}>0</button>
+        <button onClick={() => addScore(1)}>1</button>
+        <button onClick={() => addScore(2)}>2</button>
+        <button onClick={() => addScore(3)}>3</button>
+        <button onClick={() => addScore(4)}>4</button>
+        <button onClick={() => addScore(5)}>5</button>
+        <button onClick={() => addScore(6)}>6</button>
+        <button onClick={addWicket}>Wicket</button>
+    </div>  
+) 
+}
+
+const Result = () =>( 
+    <div>
+        {ballWiseRes.map((res, index) =>(
+            <>
+            {index % 6 === 0 ? <br /> : null}
+            <span key={index}>{res === 0?<strong>.</strong>:res}</span>&nbsp;&nbsp;&nbsp;</>))
+            }
+    </div>
+)
+/**const Result = () => {
+  return (
+    <div>
+      {ballWiseRes.map((res) => <span>{res}</span>)}
+    </div>
+  );
+};
+{} => explicit return, return keyword likhna padta hai
+() matlab implicit return */
+const App = () =>{
+    return(
+        <div style={{textAlign:"center"}}>
+            <h1>Score Handler</h1>
+            <h2>Current Score {score}/{wicket}</h2>
+            <ScoreButtons />
+            <Result />
+            
+        </div>
+    )
+
+}
+
+const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+rootElement.render(<App/>)
+
+
+
+
+    </script>
+    
+</body>
+</html>
