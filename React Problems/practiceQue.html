@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const handleSubmit = (e) =>{
+            e.preventDefault();
+            const type = e.type;
+            console.log(type);
+            //submit - output
+            //event.type returns a string with the name of the event on the DOM element,
+            //which in this case is the submit event.
+
+
+          rootElement.render(<App/>)
+
+        };
+
+
+        const [, animal] = ['Horse', 'cat', 'cow'];
+        console.log(animal);
+        //output = cat
+        //as the first animal "Horse" is skipped, and the second element cat is assigned to the animal.
+
+        const App = () => {
+        return(
+            <>
+            <h1>Hey</h1>
+            <form onSubmit={handleSubmit}>
+                <input placeholder="whats on your mind?"/>
+                <button>Click Me!</button>
+                </form> 
+                </>
+        );
+            }
+
+
+            const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+            rootElement.render(<App/>)
+
+    </script>
+    
+</body>
+</html>
