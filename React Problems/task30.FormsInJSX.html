@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // normal variables
+      let name = "";
+      let marks = "";
+      let students = [];
+
+      const handleChange = (e) => {
+        if (e.target.name === "name") {
+          name = e.target.value;
+        }
+        if (e.target.name === "marks") {
+          marks = e.target.value;
+        }
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault(); // reload band
+
+        students.push({ name, marks });
+        root.render(<App />);
+      };
+
+      const Form = () => (
+        <form onSubmit={handleSubmit}>
+          <input name="name" placeholder="Student Name" onChange={handleChange} />
+          <input name="marks" placeholder="Marks" onChange={handleChange} />
+          <button>Add</button>
+        </form>
+      );
+
+      const Result = () => (
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Student's name</th>
+              <th>Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {students.map((s, i) => (
+              <tr key={i}>
+                <td>{s.name}</td>
+                <td>{s.marks}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+
+      const App = () => (
+        <>
+          <Form />
+          <Result />
+        </>
+      );
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
