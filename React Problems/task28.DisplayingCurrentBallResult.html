@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Score Keeper</title>
+    <title>Displaying current ball result</title>
     <script
         crossorigin
         src="https://unpkg.com/react@18/umd/react.development.js"
@@ -14,10 +14,10 @@
         ></script>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-
 <body>
     <div id="root"></div>
     <script type="text/babel">
+
 
 let score = 0;
 let wicket = 0;
@@ -26,17 +26,16 @@ let hit = 0;
 
 function addScore(num){
     hit = num;
-     console.log(hit)
-//whenever when we click a button it becomes hit=num.
-rootElement.render(<App/>)
-}
-
-function addWicket(){
-  hit = "W"
-  console.log(hit)
+    console.log(hit);
     rootElement.render(<App/>)
 }
 
+function addWicket(){
+    hit = "W";
+    console.log(hit);
+     rootElement.render(<App/>)
+    
+}
 
 const ScoreButtons = () => {
     return(
@@ -53,6 +52,19 @@ const ScoreButtons = () => {
 ) 
 }
 
+function handleSubmit(event){
+    event.preventDefault();
+    if(hit === "W"){
+        wicket+=1;
+    }else{
+    score += hit;
+    }
+    ballWiseRes.unshift(hit);
+    rootElement.render(<App/>);
+
+}
+
+
 const Form = () => (
     <form onSubmit={handleSubmit}>
         <input value = {hit}/>
@@ -63,48 +75,34 @@ const Form = () => (
 
 const Result = () =>( 
     <div>
-        {ballWiseRes.map((res, index) =>(
-            <>
-            {index % 6 === 0 ? <br /> : null}
-            <span key={index}>{res === 0?<strong>.</strong>:res}</span>&nbsp;&nbsp;&nbsp;</>))
-            }
+    {ballWiseRes.map((res, index) =>(
+    <>
+    {index % 6 === 0 ? <br /> : null}
+    <span key={index}>{res === 0?<strong>.</strong>:res}</span>&nbsp;&nbsp;&nbsp;</>))
+    }
     </div>
 )
-/**const Result = () => {
-  return (
-    <div>
-      {ballWiseRes.map((res) => <span>{res}</span>)}
-    </div>
-  );
-};
-{} => explicit return, return keyword likhna padta hai
-() matlab implicit return */
 
-function handleSubmit(event){
-    event.preventDefault();
 
-}
-const App = () =>{
+const App = ()=>{
     return(
         <div style={{textAlign:"center"}}>
             <h1>Score Handler</h1>
-            <h2>Current Score {score}/{wicket}</h2>
+            <h2>Current Score : {score}/{wicket}</h2>
             <ScoreButtons />
             <br />
             <Form />
-        
-            <hr />
-            
-        </div>
+           
+            <hr/>
+             {ballWiseRes.map((res, index)=>(
+                <p key = {index}>{res}</p>
+            ))}
+         </div>   
     )
-
 }
 
 const rootElement = ReactDOM.createRoot(document.getElementById("root"));
 rootElement.render(<App/>)
-
-
-
 
     </script>
     

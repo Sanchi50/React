@@ -29,8 +29,9 @@ function addScore(num){
     ballWiseRes.push(num);
     score += num;
     console.log(ballWiseRes)
-    }
+    
     rootElement.render(<App/>)
+    }
 }
 
 function addWicket(){
@@ -38,8 +39,10 @@ function addWicket(){
     ballWiseRes.push("W");
     wicket+=1;
      console.log(ballWiseRes)
-    }
+ }
+    
     rootElement.render(<App/>)
+ 
 }
 
 
@@ -63,7 +66,8 @@ const Result = () =>(
         {ballWiseRes.map((res, index) =>(
             <>
             {index % 6 === 0 ? <br /> : null}
-            <span key={index}>{res === 0?<strong>.</strong>:res}</span>&nbsp;&nbsp;&nbsp;</>))
+            <span key={index}>{res === 0?<strong>.</strong>:res}</span>&nbsp;&nbsp;&nbsp;</>
+        ))
             }
     </div>
 )
