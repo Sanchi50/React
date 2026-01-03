@@ -1,0 +1,22 @@
+/* Write code for your CSS here */
+.skills{
+    margin:30px 0;
+}
+
+.skills ul {
+    list-style-type:none;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+}
+
+.skills li {
+    background-color: rgba(23, 23, 205, 0.333);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style:unset;
+    
+
+}
