@@ -1,43 +1,68 @@
-import React from "react";
-import "./styles.css";
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = { theme: "light" };
 
-    // IMPORTANT: manual binding
-    this.toggleTheme = this.toggleTheme.bind(this);
-  }
+export default function App() {
+  return (
+    <div >
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1rem",
+          margin: "auto",
+          width: "250px",
+          height: "225px",
+          padding: "2rem"
+        }}
+      >
+        <h1>Register Form</h1>
 
-  toggleTheme() {
-    this.setState({
-      theme: this.state.theme === "light" ? "dark" : "light"
-    });
-  }
-
-  render() {
-    return (
-      <div className={this.state.theme}>
-        <button onClick={this.toggleTheme}>
-          {this.state.theme === "light" ? "Dark Theme" : "Light Theme"}
-        </button>
-
-        <h2>Why We Explore - NASA</h2>
-
-        <img
-          src="https://res.cloudinary.com/dl26pbek4/image/upload/v1671686299/launch-pad-67650_1920_p6izup.jpg"
-          alt="space shuttle"
+        <input
+          type="text"
+          placeholder="Name"
+          style={{
+            width: "100%",
+            paddingBlock: "0.5rem",
+            border: "1px solid black",
+            borderRadius: "5px"
+          }}
         />
 
-        <p>
-          Humans are driven to explore the unknown, discover new worlds, push
-          the boundaries of our scientific and technical limits, and then push
-          further.
-        </p>
-      </div>
-    );
-  }
-}
+        <input
+          type="email"
+          placeholder="Email"
+          style={{
+            width: "100%",
+            paddingBlock: "0.5rem",
+            border: "1px solid black",
+            borderRadius: "5px"
+          }}
+        />
 
-export default App;
+        <input
+          type="password"
+          placeholder="Password"
+          style={{
+            width: "100%",
+            paddingBlock: "0.5rem",
+            border: "1px solid black",
+            borderRadius: "5px"
+          }}
+        />
+
+        <button
+          style={{
+            width: "100%",
+            backgroundColor: "black",
+            color: "white",
+            paddingBlock: "0.5rem",
+            fontSize: "1.035rem"
+          }}
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
